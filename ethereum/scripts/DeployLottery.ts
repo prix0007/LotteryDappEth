@@ -1,3 +1,4 @@
+import { BigNumber } from "ethers";
 import { ethers } from "hardhat";
 import { Lottery__factory } from "../typechain-types";
 
@@ -21,9 +22,9 @@ async function main() {
   const LotteryContract = await LotteryFactory.deploy(
     "TK",
     "Ticket",
-    1000,
-    1,
-    1
+    10 ** 3,
+    BigNumber.from(10).pow(18).mul(5),
+    BigNumber.from(10).pow(18).mul(1)
   );
   await LotteryContract.deployed();
 
