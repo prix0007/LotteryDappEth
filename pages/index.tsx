@@ -14,6 +14,7 @@ function Home() {
   const triedToEagerConnect = useEagerConnect();
 
   const isConnected = typeof account === "string" && !!library;
+  console.log(account, library);
 
   return (
     <div>
@@ -42,8 +43,8 @@ function Home() {
 
         {isConnected && (
           <section>
+            asd
             <ETHBalance />
-
             <TokenBalance tokenAddress={DAI_TOKEN_ADDRESS} symbol="DAI" />
           </section>
         )}
