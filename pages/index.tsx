@@ -4,6 +4,7 @@ import Link from "next/link";
 import Account from "../components/Account";
 import ETHBalance from "../components/ETHBalance";
 import TokenBalance from "../components/TokenBalance";
+import MyContract from "../components/Contract";
 import useEagerConnect from "../hooks/useEagerConnect";
 
 const DAI_TOKEN_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
@@ -14,6 +15,7 @@ function Home() {
   const triedToEagerConnect = useEagerConnect();
 
   const isConnected = typeof account === "string" && !!library;
+  console.log(account, library);
 
   return (
     <div>
@@ -25,26 +27,18 @@ function Home() {
       <header>
         <nav>
           <Link href="/">
-            <a>next-web3-boilerplate</a>
+            <a>Lottery Token Dapp</a>
           </Link>
-
           <Account triedToEagerConnect={triedToEagerConnect} />
         </nav>
       </header>
 
       <main>
-        <h1>
-          Welcome to{" "}
-          <a href="https://github.com/mirshko/next-web3-boilerplate">
-            next-web3-boilerplate
-          </a>
-        </h1>
 
         {isConnected && (
           <section>
             <ETHBalance />
-
-            <TokenBalance tokenAddress={DAI_TOKEN_ADDRESS} symbol="DAI" />
+            <MyContract />  
           </section>
         )}
       </main>
